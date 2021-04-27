@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.dao.PictureDao">
+    <select id="listPicture" resultType="com.blog.beans.Picture">
+        select id,picturename,picturetime,pictureaddress,picturedescription from t_picture order by id desc
+    </select>
+
+    <insert id="savePicture" parameterType="com.blog.beans.Picture">
+        insert into t_picture(picturename,picturetime,pictureaddress,picturedescription)
+        values(#{picturename},#{picturetime},#{pictureaddress},#{picturedescription})
+    </insert>
+
+    <select id="getPicture" resultType="com.blog.beans.Picture">
+        select id,picturename,picturetime,pictureaddress,picturedescription from t_picture where id = #{id}
+    </select>
+
+    <update id="updatePicture" parameterType="com.blog.beans.Picture">
+        update t_picture
+        set picturename = #{picturename},picturetime = #{picturetime},pictureaddress = #{pictureaddress},picturedescription = #{picturedescription}
+        where id = #{id}
+    </update>
+
+    <delete id="deletePicture">
+        delete from t_picture where id = #{id}
+    </delete>
+</mapper>

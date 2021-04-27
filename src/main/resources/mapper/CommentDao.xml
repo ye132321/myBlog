@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.dao.CommentDao">
+    <select id="findByBlogIdAndParentIdNull" resultType="com.blog.beans.Comment">
+        select * from t_comment
+        where blog_id = #{blogId} and parent_comment_id = #{parentCommentId}
+        order by create_time desc
+    </select>
+
+    <select id="findByBlogIdAndParentIdNotNull" resultType="com.blog.beans.Comment">
+        select * from t_comment
+        where blog_id = #{blogId} and parent_comment_id = #{id}
+        order by create_time desc
+    </select>
+
+    <select id="findByBlogIdAndReplayId" resultType="com.blog.beans.Comment">
+        select * from t_comment
+        where blog_id = #{blogId} and parent_comment_id = #{childId}
+        order by create_time desc
+    </select>
+    <delete id="deleteComment">
+        delete from t_comment where id = #{id}
+    </delete>
+
+    <insert id="saveComment" parameterType="com.blog.beans.Comment">
+        insert into t_comment(nickname,email,content,avatar,create_time,blog_id,parent_comment_id,admin_comment)
+        values(#{nickname},#{email},#{content},#{avatar},#{createTime},#{blogId},#{parentCommentId},#{adminComment})
+    </insert>
+</mapper>

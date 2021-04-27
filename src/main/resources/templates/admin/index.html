@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>博客管理</title>
+    <div th:include="admin/common :: commonheader"></div>
+</head>
+<body>
+
+<!--导航栏-->
+<div th:replace="admin/common :: #topmenu"></div>
+
+<br>
+<br>
+<br>
+
+<!--中间内容-->
+<div class="m-padded-tb-massivex">
+    <div class="ui container">
+        <div class="ui success large  message">
+            <p align="center">承蒙时光洗礼 往事已云淡风轻</p>
+        </div>
+
+        <img src="../../static/images/bg2.jpg" th:src="@{/images/bg2.jpg}" alt=""
+             class="ui rounded bordered fluid image">
+    </div>
+</div>
+
+<!--底部栏-->
+<div th:replace="admin/common :: #footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script>
+  $('.ui.dropdown').dropdown({
+    on : 'hover'
+  });
+</script>
+</body>
+</html>
